@@ -10,7 +10,7 @@ class Movie extends Equatable {
     required this.title,
     required this.imagePath,
     required this.comments,
-    this.isCommentAllowed = true, // Provide a default value
+    this.isCommentAllowed = true,
   });
 
   @override

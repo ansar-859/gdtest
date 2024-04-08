@@ -19,6 +19,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
+  // default values of existing user
   final _emailController = TextEditingController(text: 'ajaved.859@gmail.com');
   final _passwordController = TextEditingController(text: '123456');
 
@@ -40,7 +41,7 @@ class _SignInState extends State<SignIn> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            // Navigating to the Home screen if the user is authenticated
+            // Home screen if the user is authenticated with no backstack
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -50,7 +51,7 @@ class _SignInState extends State<SignIn> {
             );
           }
           if (state is AuthError) {
-            // Showing the error message if the user has entered invalid credentials
+            // error message
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.error)));
           }
@@ -58,13 +59,11 @@ class _SignInState extends State<SignIn> {
         child: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             if (state is Loading) {
-              // Showing the loading indicator while the user is signing in
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
             if (state is UnAuthenticated) {
-              // Showing the sign in form if the user is not authenticated
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.all(18.0),

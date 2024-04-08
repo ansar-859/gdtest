@@ -43,8 +43,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
-            // Navigate to the login screen when sign-out is successful
+            // clear backstack
             Navigator.of(context).popUntil((route) => route.isFirst);
+            // Navigate to the login screen when sign-out is successful
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const SignIn()),
@@ -53,38 +54,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
         },
         child: _currentUser != null
             ? Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundImage: _currentUser.photoURL != null
-                    ? NetworkImage(_currentUser.photoURL!)
-                    : AssetImage('assets/images/default_user.png')
-                as ImageProvider,
-                radius: 50,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Name: ${_currentUser.displayName ?? ''}',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Email: ${_currentUser.email ?? ''}',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 120),
-              AppButton(
-                text: 'Sign Out',
-                onPressed: () {
-                  BlocProvider.of<AuthBloc>(context)
-                      .add(SignOutRequested());
-                },
-                icon: Icons.logout,
-              ),
-            ],
-          ),
-        )
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: _currentUser.photoURL != null
+                          ? NetworkImage(_currentUser.photoURL!)
+                          : AssetImage('assets/images/default_user.png')
+                              as ImageProvider,
+                      radius: 50,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Name: ${_currentUser.displayName ?? ''}',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Email: ${_currentUser.email ?? ''}',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(height: 120),
+                    AppButton(
+                      text: 'Sign Out',
+                      onPressed: () {
+                        BlocProvider.of<AuthBloc>(context)
+                            .add(SignOutRequested());
+                      },
+                      icon: Icons.logout,
+                    ),
+                  ],
+                ),
+              )
             : const CircularProgressIndicator(),
       ),
     );

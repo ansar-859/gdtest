@@ -39,7 +39,6 @@ class _SignUpState extends State<SignUp> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            // Navigating to the dashboard screen if the user is authenticated
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) =>
@@ -48,18 +47,15 @@ class _SignUpState extends State<SignUp> {
             );
           }
           if (state is AuthError) {
-            // Displaying the error message if the user is not authenticated
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.error)));
           }
         },
         builder: (context, state) {
           if (state is Loading) {
-            // Displaying the loading indicator while the user is signing up
             return const Center(child: CircularProgressIndicator());
           }
           if (state is UnAuthenticated) {
-            // Displaying the sign up form if the user is not authenticated
             return Center(
               child: Padding(
                 padding: const EdgeInsets.all(18.0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gdtest/common/palette.dart';
+import 'package:gdtest/presentation/theme/palette.dart';
 import 'package:gdtest/data/models/movie.dart';
 import '../screens/movie_details_screen.dart';
 

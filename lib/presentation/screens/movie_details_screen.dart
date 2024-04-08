@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gdtest/bloc/movie/movie_bloc.dart';
-import 'package:gdtest/common/palette.dart';
+import 'package:gdtest/presentation/theme/palette.dart';
 import 'package:gdtest/data/models/movie.dart';
 
 import '../widgets/custom_app_bar.dart';
@@ -16,6 +16,7 @@ class MovieDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // movie name as app bar title
       appBar: CustomAppBar(title: movie.title, canGoBack: true),
       body: Column(
         children: [
@@ -35,6 +36,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 builder: (context, state) {
                   if (state is MovieLoaded) {
                     return ListView.builder(
+                      //related movies list.
                       scrollDirection: Axis.horizontal,
                       itemCount: 3,
                       itemBuilder: (context, index) {

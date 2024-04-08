@@ -8,7 +8,7 @@ class AuthRepository {
       required String password,
       required String name}) async {
     const String dummyProfilePicUrl =
-        "https://static.vecteezy.com/system/resources/previews/007/226/475/original/user-account-circle-glyph-color-icon-user-profile-picture-userpic-silhouette-symbol-on-white-background-with-no-outline-negative-space-illustration-vector.jpg";
+        "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -48,7 +48,6 @@ class AuthRepository {
 
   Future<void> signOut() async {
     try {
-      print("Called Signout on Service");
       await _firebaseAuth.signOut();
     } catch (e) {
       throw Exception(e);

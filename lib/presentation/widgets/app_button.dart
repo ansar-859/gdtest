@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gdtest/common/palette.dart';
+import 'package:gdtest/presentation/theme/palette.dart';
 
 class AppButton extends StatelessWidget {
   final String text;

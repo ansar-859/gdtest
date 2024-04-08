@@ -10,10 +10,11 @@ import 'package:gdtest/firebase_options.dart';
 import 'package:gdtest/presentation/screens/auth/sign_in.dart';
 import 'package:gdtest/presentation/screens/home_screen.dart';
 
-import 'common/custom_theme.dart';
+import 'presentation/theme/custom_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //auto generated from flutterfire CLI
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
@@ -45,11 +46,14 @@ class MyApp extends StatelessWidget {
           darkTheme: CustomTheme.darkTheme(context),
           themeMode: ThemeMode.dark,
           home: StreamBuilder<User?>(
+            //fetching user session status
             stream: FirebaseAuth.instance.userChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                // user session existing, take to home
                 return HomeScreen(currentUser: snapshot.data!);
               }
+              //No session, ask for login
               return SignIn();
             },
           ),
