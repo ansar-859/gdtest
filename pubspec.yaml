@@ -22,6 +22,7 @@ dependencies:
   cloud_firestore: ^4.16.0
 
   email_validator: ^2.1.17
+  faker: ^2.1.0
 
 dev_dependencies:
   flutter_test:
