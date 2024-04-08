@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "550095908731",
+    "project_id": "gdtest-9e96a",
+    "storage_bucket": "gdtest-9e96a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550095908731:android:795c2035eca17e94e357de",
+        "android_client_info": {
+          "package_name": "com.ansarjaved.gdtest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmsWlAp_ImFsx4VRZ7VwDQIHzIwTyOriU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
